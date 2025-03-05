@@ -2,7 +2,7 @@
 
 > [!NOTE]
 >
->  Inspired by [create-t3-turbo](https://github.com/t3-oss/create-t3-turbo)
+>  Inspired by [create-t3-turbo](https://github.com/t3-oss/create-t3-turbo) with much simpler boilerplate to start.
 
 
 
