@@ -1,82 +1,76 @@
-# Resume builder
+# create-turbo-init
 
-## Using this example
+> [!NOTE]
+>
+>  Inspired by [create-t3-turbo](https://github.com/t3-oss/create-t3-turbo)
 
-Run the following command:
 
-```sh
-npx create-turbo@latest
+
+## Installation
+
+> [!NOTE]
+>
+> Make sure to follow the system requirements specified in [`package.json#engines`](./package.json#L4) before proceeding.
+
+There are two ways of initializing an app using the `create-turbo-init` starter. You can either use this repository as a template:
+
+or use Turbo's CLI to init your project (use PNPM as package manager):
+
+```bash
+npx create-turbo@latest -e https://github.com/rashedInt32/create-turbo-init
 ```
 
-## What's inside?
+## About
 
-This Turborepo includes the following packages/apps:
+It uses [Turborepo](https://turborepo.org) and contains:
 
-### Apps and Packages
-
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
-
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm build
+```text
+.github
+  └─ workflows
+        └─ CI with pnpm cache setup
+.vscode
+  └─ Recommended extensions and settings for VSCode users
+apps
+  ├─ Web
+  |   ├─ Nitro server to proxy OAuth requests in preview 
+packages
+  └─ ui
+      └─ Start of a UI package for the webapp using shadcn-ui
+tooling
+  ├─ eslint
+  |   └─ shared, fine-grained, eslint presets
+  ├─ prettier
+  |   └─ shared prettier configuration
+  ├─ tailwind
+  |   └─ shared tailwind configuration
+  └─ typescript
+      └─ shared tsconfig you can extend from
 ```
 
-### Develop
+> In this template, we use `@repo` as a placeholder for package names. As a user, you might want to replace it with your own organization or project name. You can use find-and-replace to change all the instances of `@repo` to something like `@my-company` or `@project-name`.
 
-To develop all apps and packages, run the following command:
 
-```
-cd my-turborepo
-pnpm dev
-```
 
-### Remote Caching
+To get it running, follow the steps below:
 
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
+### 1. Setup dependencies
 
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+```bash
+# Install dependencies
+pnpm i
 
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
+### 4a. When it's time to add a new UI component
 
-```
-cd my-turborepo
-npx turbo login
+Run the `ui-add` script to add a new UI component using the interactive `shadcn/ui` CLI:
+
+```bash
+pnpm ui-add
 ```
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+When the component(s) has been installed, you should be good to go and start using it in your app.
 
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
+### TODO: When it's time to add a new package
 
-```
-npx turbo link
-```
+~~To add a new package, simply run `pnpm turbo gen init` in the monorepo root. This will prompt you for a package name as well as if you want to install any dependencies to the new package (of course you can also do this yourself later).
+The generator sets up the `package.json`, `tsconfig.json` and a `index.ts`, as well as configures all the necessary configurations for tooling around your package such as formatting, linting and typechecking. When the package is created, you're ready to go build out the package.~~
 
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
